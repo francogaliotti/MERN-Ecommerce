@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 function ProductPage() {
   const params = useParams()
   const slug = params.slug
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: product, refetch, isLoading, error } = useGetProductDetailsBySlugQuery(slug!)
   const { state, dispatch } = useContext(Store)
   const { cart: { cartItems } } = state
