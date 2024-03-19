@@ -1,40 +1,69 @@
-import { Product } from "./types/Product";
+import { User } from "./models/UserModel";
+import { Product } from "./models/ProductModel";
+import bcrypt from 'bcryptjs'
 
 export const sampleProducts: Product[] = [
     {
-        name: "Slim Shirt",
-        slug: "slim-shirt",
-        image: "/images/p1.jpg",
-        price: 60,
-        brand: "Nike",
-        rating: 4.5,
-        numReviews: 10,
-        countInStock: 6,
-        category: "Shirts",
-        description: "Slim fit shirt"
+      name: 'Nike Slim shirt',
+      slug: 'nike-slim-shirt',
+      category: 'Shirts',
+      image: '../images/p1.jpg',
+      price: 120,
+      countInStock: 10,
+      brand: 'Nike',
+      rating: 4.5,
+      numReviews: 10,
+      description: 'high quality shirt',
     },
     {
-        name: "Fit Shirt",
-        slug: "fit-shirt",
-        image: "/images/p2.jpg",
-        price: 50,
-        brand: "Adidas",
-        rating: 2.1,
-        numReviews: 5,
-        countInStock: 6,
-        category: "Shirts",
-        description: "Fit shirt"
+      name: 'Adidas Fit Shirt',
+      slug: 'adidas-fit-shirt',
+      category: 'Shirts',
+      image: '../images/p2.jpg',
+      price: 100,
+      countInStock: 20,
+      brand: 'Adidas',
+      rating: 4.0,
+      numReviews: 10,
+      description: 'high quality product',
     },
     {
-        name: "Best Pants",
-        slug: "best-pants",
-        image: "/images/p3.jpg",
-        price: 70,
-        brand: "Nike",
-        rating: 4.5,
-        numReviews: 8,
-        countInStock: 0,
-        category: "Pants",
-        description: "Best pants"
-    }
-]
+      name: 'Lacoste Free Pants',
+      slug: 'lacoste-free-pants',
+      category: 'Pants',
+      image: '../images/p3.jpg',
+      price: 220,
+      countInStock: 0,
+      brand: 'Lacoste',
+      rating: 4.8,
+      numReviews: 17,
+      description: 'high quality product',
+    },
+    {
+      name: 'Nike Slim Pant',
+      slug: 'nike-slim-pant',
+      category: 'Pants',
+      image: '../images/p4.jpg',
+      price: 78,
+      countInStock: 15,
+      brand: 'Nike',
+      rating: 4.5,
+      numReviews: 14,
+      description: 'high quality product',
+    },
+  ]
+  
+  export const sampleUsers: User[] = [
+    {
+      name: 'Joe',
+      email: 'admin@example.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'John',
+      email: 'user@example.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+  ]

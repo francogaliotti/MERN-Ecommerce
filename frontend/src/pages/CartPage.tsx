@@ -18,7 +18,7 @@ const CartPage = () => {
         dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } })
     }
     const checkoutHandler = () => {
-        navigate('signin?redirect=/shipping')
+        navigate('/signin?redirect=/shipping')
     }
     const removeItemHandler = (item: CartItem) => {
         dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
