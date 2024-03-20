@@ -1,6 +1,5 @@
 import { Badge, Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
-import './App.css'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { Store } from './Store'
 import { ToastContainer } from 'react-toastify'
@@ -52,10 +51,14 @@ function App() {
             </Nav.Link>
             {userInfo ? (
               <NavDropdown title={userInfo.name} id='basic-nav-dropdown'>
-                  <NavDropdown.Item
-                    className='dropdown-item'
-                    onClick={signOutHandler}
-                  >Sign Out</NavDropdown.Item>
+                  <Link
+                      className="dropdown-item"
+                      to="#signout"
+                      onClick={signOutHandler}
+                    >
+                      {' '}
+                      Sign Out{' '}
+                    </Link>
               </NavDropdown>
             ) : (
               <Nav.Link href='/signin'>Sign In</Nav.Link>
