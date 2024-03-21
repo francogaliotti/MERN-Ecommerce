@@ -1,4 +1,4 @@
-import { SyntheticEvent, useContext, useEffect, useState } from "react"
+import { SyntheticEvent, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Store } from "../Store"
 import { Helmet } from "react-helmet-async"
@@ -8,19 +8,13 @@ import { Button, Form } from "react-bootstrap"
 export const ShippingAddressPage = () => {
     const navigate = useNavigate()
     const { state, dispatch } = useContext(Store)
-    const { userInfo, cart: { shippingAddress } } = state
+    const { cart: { shippingAddress } } = state
 
     const [fullName, setFullName] = useState(shippingAddress.fullName || '')
     const [address, setAddress] = useState(shippingAddress.address || '')
     const [city, setCity] = useState(shippingAddress.city || '')
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '')
     const [country, setCountry] = useState(shippingAddress.country || '')
-
-    useEffect(() => {
-        if (!userInfo) {
-            navigate('/signin?redirect=/shipping')
-        }
-    }, [navigate, userInfo])
 
     const submitHandler = (e: SyntheticEvent) => {
         e.preventDefault()

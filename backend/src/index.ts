@@ -6,6 +6,7 @@ import morgan from 'morgan'
 import { productRouter } from './routers/ProductRouter'
 import { seedRouter } from './routers/SeedRouter'
 import { userRouter } from './routers/UserRouter'
+import { orderRouter } from './routers/OrderRouter'
 
 dotenv.config()
 const app = express()
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/seed', seedRouter)
 app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
+app.use('/api/orders', orderRouter)
 
 const port = process.env.PORT || 4000
 

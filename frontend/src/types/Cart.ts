@@ -8,7 +8,7 @@ export type CartItem = {
     _id: string
 }
 
-export type ShippingAdress = {
+export type ShippingAddress = {
     fullName: string
     address: string
     city: string
@@ -18,7 +18,7 @@ export type ShippingAdress = {
 
 export type Cart = {
     cartItems: CartItem[]
-    shippingAddress: ShippingAdress
+    shippingAddress: ShippingAddress
     paymentMethod: string
     itemsPrice: number
     shippingPrice: number
