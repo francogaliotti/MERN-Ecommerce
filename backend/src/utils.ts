@@ -30,7 +30,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
     const {authorization} = req.headers
     if(authorization){
         const token = authorization.slice(7, authorization.length)
-        const decode = jwt.verify( token, process.env.JWT_SCRET || 'secret')
+        const decode = jwt.verify( token, process.env.JWT_SECRET || 'secret')
         req.user = decode as IUser
         next()
     } else {
