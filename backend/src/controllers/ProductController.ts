@@ -16,3 +16,8 @@ export const getSingleProduct = asyncHandler(async (req: Request, res: Response)
         res.status(404).json({ message: 'Product not found' })
     }
 })
+
+export const getCategories = asyncHandler(async (req: Request, res: Response) => { 
+    const categories = await ProductModel.find().distinct('category')
+    res.json(categories)
+})
