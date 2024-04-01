@@ -45,3 +45,26 @@ export const signUp = asyncHandler(async (req: Request, res: Response) => {
         token: generateToken(newUser)
     })
 })
+
+export const updateProfile = asyncHandler(async (req: Request, res: Response) => {
+    const { _id } = req.user
+    const { email, name, password } = req.body
+    const user = await UserModel.findById(_id)
+    if (user) {
+        user.name = name || user.name
+        user.email = email || user.email
+        if (password) {
+            user.password = bcrypt.hashSync(password, 8)
+        }
+        const updatedUser = await user.save()
+        res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            token: generateToken(updatedUser)
+        })
+    } else {
+        res.status(404).json({ message: 'User not found' })
+    }
+})

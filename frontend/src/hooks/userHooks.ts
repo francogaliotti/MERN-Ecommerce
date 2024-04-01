@@ -8,6 +8,13 @@ interface UserCredentials {
     password: string
 }
 
+interface IUpdateUser {
+    name: string
+    email: string
+    password?: string
+}
+
+
 export const useSignInMutation = () => useMutation({
     mutationFn: async ({email, password}: UserCredentials) => {
         const res = await apiClient.post<UserInfo>('api/users/signin', {
@@ -23,6 +30,17 @@ export const useSignUpMutation = () => useMutation({
         const res = await apiClient.post<UserInfo>('api/users/signup', {
             name,
             email, 
+            password
+        })
+        return res.data
+    }
+})
+
+export const useUpdateProfileMutation = () => useMutation({
+    mutationFn: async ({name, email, password}: IUpdateUser) => {
+        const res = await apiClient.put<UserInfo>('api/users/profile', {
+            name,
+            email,
             password
         })
         return res.data
